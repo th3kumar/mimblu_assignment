@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="16dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerViewMatchOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/linearLayout"
+            android:clipToPadding="false"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:overScrollMode="never"
+            android:scrollbars="horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pick your Plan to Continue"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:padding="8dp" />
+    <TextView
+        android:id="@+id/textViewDiscription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mimblu is up to 5x cheaper"
+        android:textSize="16sp"
+        android:padding="4dp" />
+    <TextView
+        android:id="@+id/textViewDiscriptionline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="than in-person therapy"
+        android:textSize="16sp"
+        android:padding="4dp" />
+
+    </LinearLayout>
+
+    </RelativeLayout>
