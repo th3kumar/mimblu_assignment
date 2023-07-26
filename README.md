@@ -2,7 +2,9 @@
 
 # Mimblu App - Mental Health Support
 
-![Mimblu Logo](app_logo.png)
+![floating_screen_phone_mockup](https://github.com/th3kumar/mimblu_assignment/assets/72141924/3db175ff-14b9-45b3-a078-3562769626cf)
+
+
 
 ## Overview
 
@@ -22,7 +24,10 @@ Mimblu is a mobile app designed to provide mental health support and connect use
 
 ## Screenshots
 
-![Screenshot 1](screenshot_1.png) ![Screenshot 2](screenshot_2.png)
+![Beige Ilustration Virtual Zoom Background](https://github.com/th3kumar/mimblu_assignment/assets/72141924/fe42f4af-5f89-4559-a542-068dee2e92c6)
+
+
+
 
 ## Getting Started
 
