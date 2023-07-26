@@ -10,6 +10,95 @@
 
 Mimblu is a mobile app designed to provide mental health support and connect users with professional therapists. It offers features such as symptom selection, match options, and personalized therapy plans.
 
+## Technologies Used
+
+- Kotlin: The app is primarily developed using Kotlin, a modern programming language for Android development.
+
+- Android Architecture Components: MVVM - Utilized ViewModel and LiveData for handling UI-related data and lifecycle management.
+
+- Retrofit: To perform API calls and handle network operations efficiently.
+
+- RecyclerView: For displaying scrollable lists of match options and symptoms.
+
+- Gson: To parse the JSON API responses into Kotlin data classes.
+
+
+## Data Classes
+
+The app uses Kotlin data classes to represent the data entities:
+
+### SymptomItem
+
+```kotlin
+data class SymptomItem(
+    val id: Int,
+    val title: String,
+    val isSelected: Boolean
+)
+```
+
+The `SymptomItem` data class represents a symptom with its unique `id`, `title`, and the `isSelected` flag indicating whether the symptom is selected by the user.
+
+### MatchOption
+
+```kotlin
+data class MatchOption(
+    val id: Int,
+    val title: String,
+    val description: String,
+    val duration: String,
+    val videoDescription: String,
+    val final_price: String // Use string value for final_price
+)
+```
+
+The `MatchOption` data class represents a match option with its unique `id`, `title`, `description`, `duration`, `videoDescription`, and `final_price`.
+
+### ApiResponse
+
+```kotlin
+data class ApiResponse(
+    @SerializedName("list")
+    val symptoms: List<SymptomItem>,
+    @SerializedName("copyrighths")
+    val copyrighths: String
+)
+```
+
+The `ApiResponse` data class represents the response from the API, containing a list of `SymptomItem` objects and copyright information.
+
+### MatchOptionsApiResponse
+
+```kotlin
+data class MatchOptionsApiResponse(
+    @SerializedName("list")
+    val matchOptions: List<MatchOption>
+)
+```
+
+The `MatchOptionsApiResponse` data class represents the response from the API, containing a list of `MatchOption` objects.
+
+## Data Flow
+
+The Mimblu app follows the MVVM (Model-View-ViewModel) architecture, separating the UI (View) from the data and business logic (ViewModel) and the data representation (Model). The data flow in the app is as follows:
+
+1. The `MainActivity` displays a list of symptoms using the `SymptomAdapter`. When the user selects or deselects a symptom, the `SymptomAdapter` updates the `SymptomViewModel`.
+
+2. The `SymptomViewModel` holds the list of symptoms as `LiveData`. It observes changes in the user's selections and updates the UI accordingly.
+
+3. When the user opens the `SecondActivity`, the `MatchOptionViewModel` fetches the list of match options from the API using Retrofit and updates its `LiveData`.
+
+4. The `MatchOptionAdapter` observes changes in the `MatchOptionViewModel`'s `LiveData` and updates the RecyclerView with the latest match options.
+
+5. The `MatchOptionViewModel` also parses the API response using Gson and updates its `LiveData` with the list of match options.
+
+6. The RecyclerView displays the list of match options, and the user can interact with them.
+
+7. When the user selects or deselects a match option, the `MatchOptionAdapter` updates the `MatchOptionViewModel`, which in turn updates the UI and handles the business logic.
+
+---
+
+Feel free to modify and expand on this template to include any additional information or details about the app's features and functionality. Happy coding!
 ## Features
 
 - **Symptom Selection:** Users can select their symptoms from a list of options to receive personalized match options.
@@ -39,17 +128,6 @@ To use the Mimblu app, follow these steps:
 
 3. Build and run the app on an Android emulator or physical device.
 
-## Technologies Used
-
-- Kotlin: The app is primarily developed using Kotlin, a modern programming language for Android development.
-
-- Android Architecture Components: Utilized ViewModel and LiveData for handling UI-related data and lifecycle management.
-
-- Retrofit: To perform API calls and handle network operations efficiently.
-
-- RecyclerView: For displaying scrollable lists of match options and symptoms.
-
-- Gson: To parse the JSON API responses into Kotlin data classes.
 
 ## API Integration
 
