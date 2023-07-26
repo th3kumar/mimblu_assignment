@@ -6,11 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.fridayhouse.mimblu_assignment.R
 import com.fridayhouse.mimblu_assignment.data.MatchOption
+import com.fridayhouse.mimblu_assignment.utils.MatchOptionDiffUtil
 
-class MatchOptionAdapter(private val matchOptions: List<MatchOption>) : RecyclerView.Adapter<MatchOptionAdapter.MatchOptionViewHolder>() {
+class MatchOptionAdapter(private var matchOptions: List<MatchOption>) : RecyclerView.Adapter<MatchOptionAdapter.MatchOptionViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MatchOptionViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_match_option, parent, false)
@@ -26,6 +28,12 @@ class MatchOptionAdapter(private val matchOptions: List<MatchOption>) : Recycler
         return matchOptions.size
     }
 
+    fun setItems(newMatchOptions: List<MatchOption>) {
+        val diffResult = DiffUtil.calculateDiff(MatchOptionDiffUtil(matchOptions, newMatchOptions))
+        matchOptions = newMatchOptions
+        diffResult.dispatchUpdatesTo(this)
+    }
+
     inner class MatchOptionViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private val textViewTitle: TextView = itemView.findViewById(R.id.textViewTitle)
@@ -38,7 +46,7 @@ class MatchOptionAdapter(private val matchOptions: List<MatchOption>) : Recycler
             textViewTitle.text = matchOption.title
             textViewDescription.text = matchOption.description
             textViewDuration.text = "Duration: ${matchOption.duration} days"
-            textViewVideoDescription.text = "Video Description: ${matchOption.videoDescription}"
+            textViewVideoDescription.text = "Video Description: ${matchOption.video_description}"
             textViewPrice.text = "Price: ${matchOption.final_price}"
         }
     }

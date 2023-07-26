@@ -8,7 +8,7 @@ data class MatchOption(
     val title: String,
     val description: String,
     val duration: String,
-    val videoDescription: String,
+    val video_description: String,
     val final_price: String // Update the property name to final_price
 )
 

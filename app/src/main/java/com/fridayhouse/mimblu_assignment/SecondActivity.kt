@@ -4,20 +4,35 @@ package com.fridayhouse.mimblu_assignment
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.fridayhouse.mimblu_assignment.MainActivity.Companion.EXTRA_SELECTED_SYMPTOM_IDS
 import com.fridayhouse.mimblu_assignment.adapter.MatchOptionAdapter
 import com.fridayhouse.mimblu_assignment.data.MatchOption
+import com.fridayhouse.mimblu_assignment.viewModel.MatchOptionViewModel
 import com.google.gson.Gson
 
 class SecondActivity : AppCompatActivity() {
 
     private lateinit var matchOptionAdapter: MatchOptionAdapter
+    private lateinit var matchOptionViewModel: MatchOptionViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
+
+        // Initialize the ViewModel
+        matchOptionViewModel = ViewModelProvider(this).get(MatchOptionViewModel::class.java)
+
+        // Observe changes in the matchOptionsLiveData
+        matchOptionViewModel.matchOptionsLiveData.observe(this, { matchOptions ->
+            // Update the RecyclerView with the new matchOptions
+            matchOptionAdapter.setItems(matchOptions)
+        })
+
+        // Fetch match options from the API
+        matchOptionViewModel.fetchMatchOptionsFromApi()
 
 
         // Fetch the list of match options from the API or use a dummy data list
