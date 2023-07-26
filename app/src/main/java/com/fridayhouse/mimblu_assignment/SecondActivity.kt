@@ -51,7 +51,7 @@ class SecondActivity : AppCompatActivity() {
         val recyclerViewMatchOptions: RecyclerView = findViewById(R.id.recyclerViewMatchOptions)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewMatchOptions.layoutManager = layoutManager
-        matchOptionAdapter = MatchOptionAdapter(matchOptions)
+        matchOptionAdapter = MatchOptionAdapter(emptyList())
         recyclerViewMatchOptions.adapter = matchOptionAdapter
     }
 

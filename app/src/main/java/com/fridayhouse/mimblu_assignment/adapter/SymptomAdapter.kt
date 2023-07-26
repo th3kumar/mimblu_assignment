@@ -81,6 +81,8 @@ class SymptomAdapter(private val viewModel: SymptomViewModel) :
     inner class SymptomViewHolder(private val binding: ItemSymptomBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(symptom: SymptomItem) {
             binding.textViewSymptomName.text = symptom.title
+            // Prevent recursive updates when setting the checkbox state
+            binding.checkboxSymptom.setOnCheckedChangeListener(null)
             binding.checkboxSymptom.isChecked = symptom.isSelected
 
             binding.checkboxSymptom.setOnCheckedChangeListener { _, isChecked ->
