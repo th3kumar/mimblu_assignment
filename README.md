@@ -115,6 +115,9 @@ Feel free to modify and expand on this template to include any additional inform
 
 ![Beige Ilustration Virtual Zoom Background](https://github.com/th3kumar/mimblu_assignment/assets/72141924/fe42f4af-5f89-4559-a542-068dee2e92c6)
 
+## Dark Mode
+
+![Beige Ilustration Virtual Zoom Background (1)](https://github.com/th3kumar/mimblu_assignment/assets/72141924/907f629c-27c6-440b-9bf6-a80211a1277f)
 
 
 
